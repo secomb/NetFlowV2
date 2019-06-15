@@ -5,7 +5,7 @@ This program is designed to simulate the dynamics of blood flow in networks of m
 
 The simulation is based on a series of studies, in which we developed empirical equations to describe the dynamics of blood flow in microvascular networks. The key components are:
 - equations to describe the apparent viscosity of blood in microvessels in vivo as a function of vessel diameter and discharge hematocrit [6,7];
-- equations to describe the partition of hematocrit in diverging bifurcations, as a function of the flow rates in the branches, the diameters of the branches, and the hematocrit arriving at the parent vessel [7,8].
+- equations to describe the partition of hematocrit in diverging bifurcations, as a function of the flow rates in the branches, the diameters of the branches, and the hematocrit arriving at the parent vessel [7,8].  
 The parameters describing these relationships are given in RheolParams.dat. This gives parameters needed for estimating the apparent viscosity in each segment. Set varyviscosity = 1 to get diameter-dependent viscosity. Set phaseseparation = 1 to compute phase separation in diverging bifurcations. This can lead to nonconvergence of the method in some cases. Also, the number of iterations for linear and nonlinear loops are specified. These may need to be increased for very large networks.
 
 The equations used in the simulations are the versions given in our article in the Handbook of Physiology [9]. These equations allow the prediction of flow rates, pressures and hematocrits throughout the network, provided that the following information is available:
