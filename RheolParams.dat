@@ -1,0 +1,10 @@
+0.964    6.98  -13.29			bifpar   (bifurcation law)
+0.80  -0.075   -11.0   12.0		cpar
+6.0 -0.085 3.2 -2.44 -0.06 0.645	viscpar
+35000 1.e-10 1.95				nitmax, tol, omega - parameters for linear solver
+100 1.e-3 1.e-3				nitmax1, qtol, hdtol - parameters for nonlinear solver
+1.1   0.5		optw, optlam (W and lambda in modified viscosity law)
+3. 1.0466 55.	constvisc,vplas,mcv - constant viscosity, plasma viscosity (cP), mean cell vol.
+0.4		consthd, hematocrit used for constant hematocrit
+1		varyviscosity
+1		phaseseparation
