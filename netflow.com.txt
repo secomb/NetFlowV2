@@ -1,0 +1,44 @@
+# Files generated from Network.dat
+
+# Create a material in addition to the default.
+gfx cre mat gold ambient 1 0.7 0 diffuse 1 0.7 0 specular 0.5 0.5 0.5 shininess 0.8
+gfx create spectrum jet
+gfx modify spectrum jet clear overwrite_colour
+gfx modify spectrum jet linear range 0 1 red   colour_range 0 1 ambient diffuse component 1 
+gfx modify spectrum jet linear range 0 1 green colour_range 0 1 ambient diffuse component 2
+gfx modify spectrum jet linear range 0 1 blue  colour_range 0 1 ambient diffuse component 3
+
+# Read in the reticular mesh (group vessels) and hide the axes.
+gfx read nodes network.exnode
+gfx read elements network.exelem
+
+# The radius of the vessel is stored in component 1 of field
+# 'vessel_radius', defined over the elements in the vessels group.
+# Destroy the default lines.
+gfx modify g_element vessels lines delete
+gfx destroy node all
+gfx modify g_element vessels general clear;
+gfx modify g_element vessels cylinders coordinate coordinates tessellation default local circle_discretization 12 radius_scalar vessel_radius scale_factor 1 native_discretization NONE data node_colour spectrum jet
+gfx modify g_element vessels node_points coordinate coordinates local glyph sphere general size "0*0*0" centre 0,0,0 font default orientation vessel_radius scale_factors "2*2*2" data node_colour spectrum jet
+
+# Open the graphics window and turn on perspective (if desired).
+gfx cre win 1
+gfx mod win 1 view perspective
+#gfx mod win 1 view eye_point -500 500 500; #for Brain2000
+#gfx mod win 1 view eye_point -1500 1500 1500; #for BrainBoas2014
+#gfx print png window 1 file cmgui3D.png width 4096 height 4096
+#gfx print bmp window 1 file brain.bmp width 2048 height 2048
+
+###############################
+#  for making movies
+###############################
+#$width = 1024;
+#$height = 1024;
+#
+#for ($frame=1; $frame<=360; ++$frame)
+#{
+#    $filename = sprintf "frames/frame%05d.jpg", $frame;
+#    gfx print file jpg file $filename width $width height $height anti 4;   
+#    gfx mod win 1 image rotate 0 1 0 1.0;
+#}
+
