@@ -41,6 +41,8 @@ The program generates several postscript files:
 - histograms of node pressure (mmHg), segment flow velocities (mm/s), segment flow rates (nl/min) and shear stress (dyn/cm2)
 - network geometry visualized as projected on a plane. The position and orientation of the plane are specified by ContourParams.dat, giving the coordinates of three corners. Each vessel segment is color-coded according to midpoint pressure.
 
+The program generates greens.exelem and greens.exenode, allowing 3D visualization of the network using cmgui. When cmgui is started, use File - Open - com file, select greens.com.txt and hit “All” for the visualization. For details of cmgui, see: http://sourceforge.net/projects/cmiss/files/cmgui/cmgui-wx-2.8.0/
+
 This code is free to use at your own risk. Feedback and/or acknowledgement are appreciated. Email secomb@u.arizona.edu.
 
 Note: This code makes use of nrutil.h and nrutil.cpp as placed in the public domain by Numerical Recipes at http://apps.nrbook.com/c/index.html.
