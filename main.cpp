@@ -34,6 +34,7 @@ void input();
 void analyzenet();
 void setuparrays1(int nseg, int nnod);
 void flow();
+void flowtest();
 void cmgui(float *segvar);
 void picturenetwork(float *nodvar, float *segvar, const char fname[]);
 void writeflow();
@@ -57,7 +58,7 @@ double *nodpress;
 
 int main(int argc, char *argv[])
 {
-	int iseg,inod;
+	int iseg;
 
 	//Create a Current subdirectory if needed. Copy data files to it.
 #if defined(__unix__)
@@ -78,11 +79,13 @@ int main(int argc, char *argv[])
 
 	setuparrays1(nseg,nnod);
 
+	flowtest();	//removes zero-flow segments: renumbers nodes and segments - added July 2019
+
 	analyzenet();
 
 	flow();
 
-	writeflow();	//creat new network.dat file called 'Current/NetworkNew.dat'
+	writeflow();	//create new network.dat file called 'Current/NetworkNew.dat'
 
 	analyzeresults();	//statistics and histograms of resulting flows
 

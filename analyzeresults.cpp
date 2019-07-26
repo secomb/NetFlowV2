@@ -23,7 +23,7 @@ void analyzeresults()
 	extern float *length_weight, *lseg, *cond;
 	extern double *nodpress;
 
-	int i, iseg, inod, numberzeroflows = 0;
+	int i, iseg, inod;
 	int minpressnod, maxpressnod, maxflowseg, minflowseg, maxshearseg, minshearseg;
 	float meanflow, meannodpress, meansegpress, meanshear, nodpressdeviation, segpressdeviation, sheardeviation;
 	float maxflow, minflow, maxpress, minpress, maxshear, minshear, totallength, totallength1;
@@ -35,12 +35,7 @@ void analyzeresults()
 		segpress[iseg] = (nodpress[ista[iseg]] + nodpress[iend[iseg]]) / 2;
 		qq[iseg] = fabs(q[iseg]);
 		tau[iseg] = (nodpress[ista[iseg]] - nodpress[iend[iseg]])*1333.*diam[iseg] / lseg[iseg] / 4.;
-		if (qq[iseg] < 1.e-4) {
-			segtyp[iseg] = 0;		//label zero-flow segments as type 0
-			numberzeroflows++;
-		}
 	}
-	printf("Zero flow segments (final): %4i\n", numberzeroflows);
 
 	//node weighting factors: 1/2 the sum of the lengths of the segments connected to the node
 	for (inod = 1; inod <= nnod; inod++) {
