@@ -18,7 +18,8 @@ void writeflow()
 	extern int **segnodname;
 	extern float *diam,*q,*qinput,*hd,*hdinput;
 
-	int i,iseg,max=200,length;
+	int i,iseg,max=200,length,idum;
+	float fdum;
 	FILE *ifp,*ofp;
 	char bb[200];
 
@@ -31,7 +32,7 @@ void writeflow()
 	}
 	for(iseg=1; iseg<=nseg; iseg++){
 		fscanf(ifp, "%i %i %i %i %f %f %f", 
-			&segname[iseg],&segtyp[iseg],&segnodname[1][iseg],&segnodname[2][iseg],&diam[iseg],&qinput[iseg],&hdinput[iseg]);
+			&idum,&idum,&idum,&idum,&fdum,&fdum,&fdum);
 		fgets(bb,max,ifp);
 		fprintf(ofp, "%i %i %i %i %f %f %f", 
 			segname[iseg],segtyp[iseg],segnodname[1][iseg],segnodname[2][iseg],diam[iseg],q[iseg],hd[iseg]);

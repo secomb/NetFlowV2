@@ -30,7 +30,7 @@ void analyzeresults()
 	FILE *ofp;
 
 	totallength = 0.;
-	for (iseg = 1; iseg <= nseg; iseg++) {
+	for (iseg = 1; iseg <= nseg; iseg++) if (segtyp[iseg] == 4 || segtyp[iseg] == 5) {
 		totallength += lseg[iseg];
 		segpress[iseg] = (nodpress[ista[iseg]] + nodpress[iend[iseg]]) / 2;
 		qq[iseg] = fabs(q[iseg]);

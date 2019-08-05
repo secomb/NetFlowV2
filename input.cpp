@@ -21,7 +21,7 @@ void input()
 	extern float pi1,facfp,vplas,mcvcorr;
 	extern float alx,aly,alz,lb,maxl;
 	extern float tol,qtol,hdtol,omega,optw,optlam,constvisc,consthd;
-	extern float *diam,*lseg,*q,*qinput,*hd,*hdinput,*bcprfl,*bchd;
+	extern float *diam,*lseg,*q,*hd,*bcprfl,*bchd;
 	extern float *bifpar,*cpar,*viscpar,*xsl0, *xsl1, *xsl2;
 	extern float **cnode;
 
@@ -67,12 +67,10 @@ void input()
 	segtyp = ivector(1,nseg);
 	segnodname = imatrix(1,2,1,nseg);
 	diam = vector(1,nseg);
-	qinput = vector(1,nseg);
 	q = vector(1,nseg);
 	hd = vector(1,nseg);
-	hdinput = vector(1,nseg);
 	for(iseg=1; iseg<=nseg; iseg++)	fscanf(ifp, "%i %i %i %i %f %f %f%*[^\n]", 
-		&segname[iseg],&segtyp[iseg],&segnodname[1][iseg],&segnodname[2][iseg],&diam[iseg],&qinput[iseg],&hdinput[iseg]);
+		&segname[iseg],&segtyp[iseg],&segnodname[1][iseg],&segnodname[2][iseg],&diam[iseg],&q[iseg],&hd[iseg]);
 //number of nodes in vessel network
 	fgets(bb,max,ifp);
 	fscanf(ifp,"%i%*[^\n]", &nnod);

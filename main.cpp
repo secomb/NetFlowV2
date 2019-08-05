@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
 
 	analyzeresults();	//statistics and histograms of resulting flows
 
-	for (iseg = 1; iseg <= nseg; iseg++) segvar[iseg] = segpress[iseg];
+	for (iseg = 1; iseg <= nseg; iseg++) if (segtyp[iseg] == 4 || segtyp[iseg] == 5) segvar[iseg] = segpress[iseg];
 
 	cmgui(segvar);		//3D image of network
 

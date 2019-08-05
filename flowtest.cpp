@@ -73,46 +73,14 @@ converged:;
 	printf("Flowtest: %i iterations, maxerr = %e\n", niter, maxerr);
 
 	nnflow = 0;
-	iseg1 = 0;
 	for (iseg = 1; iseg <= nseg; iseg++) {
 		if (fabs(nodpress[ista[iseg]] - nodpress[iend[iseg]]) < 1.e-6) {	//remove segment
 			nnflow++;
-			if (nnflow == 1) printf("Zero-flow segments removed\n");
+			if (nnflow == 1) printf("Zero-flow segments set to type 0\n");
 			printf("%i ", iseg);
 			if (nnflow % 20 == 0) printf("\n");
-			inod1 = ista[iseg];
-			inod2 = iend[iseg];
-			nodtyp[inod1]--;
-			nodtyp[inod2]--;
-		}
-		else{							//assign new segment number	
-			iseg1++;
-			segname[iseg1] = segname[iseg];
-			segtyp[iseg1] = segtyp[iseg];
-			segnodname[1][iseg1] = segnodname[1][iseg];
-			segnodname[2][iseg1] = segnodname[2][iseg];
-			diam[iseg1] = diam[iseg];
-			q[iseg1] = q[iseg];
-			hd[iseg1] = hd[iseg];		
+			segtyp[iseg] = 0;
 		}
 	}
-	nseg -= nnflow;
-	if (nnflow > 0) printf("\n%i segments removed\n", nnflow);
-	inod1 = 0;
-	nnod0 = 0;
-	for (inod = 1; inod <= nnod; inod++) {
-		if (nodtyp[inod] == 0) {					//remove node
-			nnod0++;
-			if (nnod0 == 1) printf("\nNodes with no flowing segment removed\n");
-			printf("%i ", inod);
-			if (nnod0 % 20 == 0) printf("\n");
-		}
-		else {								//assign new node number
-			inod1++;
-			nodname[inod1] = nodname[inod];
-			for (i = 1; i <= 3; i++) cnode[i][inod1] = cnode[i][inod];
-		}
-	}
-	nnod -= nnod0;
-	if (nnod0 > 0) printf("\n%i nodes removed\n", nnod0);
+	if (nnflow > 0) printf("\n%i segments set to type 0\n", nnflow);
 }
